@@ -117,7 +117,6 @@ namespace DigiBank.Classes
                 //Tela Logada
                 TelaBoasVindas(pessoa);
                 TelaLogada(pessoa);
-                
 
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine(" Login, feito com sucesso!");
@@ -133,7 +132,6 @@ namespace DigiBank.Classes
                 Console.WriteLine();
 
                 Thread.Sleep(2500);
-
                 TelaPrincipal();
             }
        }
@@ -144,10 +142,10 @@ namespace DigiBank.Classes
             string msgTelaBemVindo =
             $"{pessoa.Nome} | Banco: {pessoa.Conta.GetCodigoBanco()} | Agência: {pessoa.Conta.GetNumeroAgencia()} | Número da Conta: {pessoa.Conta.GetNumeroConta()}";
 
-            Console.WriteLine("  DigiBank");
+            Console.WriteLine(" DigiBank");
             Console.WriteLine();
             Console.WriteLine($" Seja bem-vindo, {msgTelaBemVindo}");
-            Console.WriteLine("");
+            Console.WriteLine();
        }
         private static void realizarDeposito(Pessoa pessoa) 
         {
@@ -159,10 +157,9 @@ namespace DigiBank.Classes
             Console.Write(" | Valor à depositar: R$");
 
             double valor = double.Parse(Console.ReadLine());
-
             pessoa.Conta.Deposita(valor);
 
-            Console.Write("     Deseja confirmar o deposito de: R$" + valor.ToString("F2", CultureInfo.InvariantCulture));
+            Console.Write(" Deseja confirmar o deposito de: R$" + valor.ToString("F2", CultureInfo.InvariantCulture));
 
             Console.WriteLine(" (1- Sim | 2- Não)");            
 
@@ -173,7 +170,7 @@ namespace DigiBank.Classes
 
             if(opcao == 1)
             {
-                "Deposito efetuado com Sucesso!".WriteLine(ConsoleColor.Green);
+                "Deposito efetuado com sucesso!".WriteLine(ConsoleColor.Green);
                 //WriteLine("    Deposito efetuado", ConsoleColor.Green);
             }
             else if (opcao == 2)
@@ -235,7 +232,6 @@ namespace DigiBank.Classes
                 break;
             default:
                 Console.WriteLine(" Opção inválida");
-
                     Thread.Sleep(2500);
                     realizarSaque(pessoa);
                 break;
@@ -346,7 +342,7 @@ namespace DigiBank.Classes
                     break;
                 default:
                     Console.Clear();
-                    break;
+                break;
             }
         }
         private static void voltarLogado(Pessoa pessoa)
@@ -354,7 +350,6 @@ namespace DigiBank.Classes
             Console.Clear();
 
             Console.WriteLine(" DigiBank");
-            
             Console.WriteLine();
             Console.WriteLine(" 1 - Voltar");
             Console.WriteLine("====================");
