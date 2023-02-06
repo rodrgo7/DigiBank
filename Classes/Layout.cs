@@ -19,11 +19,11 @@ namespace DigiBank.Classes
 
             Console.Clear();
             Console.WriteLine();
-            Console.WriteLine(" 1 - Cria Conta       ");
+            Console.WriteLine(" 1 - Cria Conta");
             Console.WriteLine();
-            Console.WriteLine(" 2 - Entrar com CPF   ");
+            Console.WriteLine(" 2 - Entrar com CPF");
             Console.WriteLine();
-            Console.WriteLine(" 3 - Fechar Sistema   ");
+            Console.WriteLine(" 3 - Fechar Sistema");
 
             Console.WriteLine();
             Console.Write(">  ");
@@ -60,9 +60,9 @@ namespace DigiBank.Classes
        {
             Console.Clear();
 
-            Console.WriteLine("          DigiBank          ");
+            Console.WriteLine(" DigiBank");
             Console.WriteLine();
-            Console.WriteLine("        Criar Conta         ");
+            Console.WriteLine(" Criar Conta");
             Console.WriteLine();
             Console.Write(" Nome: ");
             string nome = Console.ReadLine();
@@ -86,12 +86,12 @@ namespace DigiBank.Classes
 
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("    Conta criada com Sucesso!   ");
+            Console.WriteLine(" Conta criada com Sucesso!");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine();
 
-            //Esse codigo faz com que o sistema espere os segundos 
-            //setados no codigo até executar a proxima ação
+            //Esse codigo faz com que o sistema espere os segundos, setados no codigo para executar a proxima ação
+            // Exemplo (2500segundos)
             Thread.Sleep(2500);
 
             TelaLogada(pessoa);
@@ -100,14 +100,14 @@ namespace DigiBank.Classes
        {
             Console.Clear();
 
-            Console.WriteLine("          Login             ");
-            Console.WriteLine("                            ");
-            Console.Write("     CPF: ");
+            Console.WriteLine(" Login");
+            Console.WriteLine();
+            Console.Write(" CPF: ");
             string cpf = Console.ReadLine();
-            Console.WriteLine("============================");
-            Console.Write("     Senha: ");
+            Console.WriteLine("====================");
+            Console.Write(" Senha: ");
             string senha = Console.ReadLine();            
-            Console.WriteLine("============================");
+            Console.WriteLine("====================");
 
             Pessoa pessoa = pessoas.FirstOrDefault(x => x.CPF == cpf && x.Senha == senha);
 
@@ -144,18 +144,18 @@ namespace DigiBank.Classes
             string msgTelaBemVindo =
             $"{pessoa.Nome} | Banco: {pessoa.Conta.GetCodigoBanco()} | Agência: {pessoa.Conta.GetNumeroAgencia()} | Número da Conta: {pessoa.Conta.GetNumeroConta()}";
 
-            Console.WriteLine("             DigiBank          ");
+            Console.WriteLine("  DigiBank");
             Console.WriteLine();
-            Console.WriteLine($"   Seja bem-vindo, {msgTelaBemVindo}");
+            Console.WriteLine($" Seja bem-vindo, {msgTelaBemVindo}");
             Console.WriteLine("");
        }
         private static void realizarDeposito(Pessoa pessoa) 
         {
             Console.Clear();
 
-            Console.WriteLine("      DigiBank - Deposito");
+            Console.WriteLine(" DigiBank - Deposito");
             Console.WriteLine();
-            Console.Write("   Saldo em conta: R$" + pessoa.Conta.ConsultaSaldo().ToString("F2", CultureInfo.InvariantCulture));
+            Console.Write(" Saldo em conta: R$" + pessoa.Conta.ConsultaSaldo().ToString("F2", CultureInfo.InvariantCulture));
             Console.Write(" | Valor à depositar: R$");
 
             double valor = double.Parse(Console.ReadLine());
@@ -164,7 +164,7 @@ namespace DigiBank.Classes
 
             Console.Write("     Deseja confirmar o deposito de: R$" + valor.ToString("F2", CultureInfo.InvariantCulture));
 
-            Console.WriteLine("   (1- Sim | 2- Não)   ");            
+            Console.WriteLine(" (1- Sim | 2- Não)");            
 
             Console.WriteLine();
             Console.Write(">  ");
@@ -182,9 +182,9 @@ namespace DigiBank.Classes
             }
             else 
             {
-                Console.WriteLine("     Opção Inválida");
+                Console.WriteLine(" Opção Inválida");
                 Console.ForegroundColor = ConsoleColor.Red;
-                WriteLine("    Deposito efetuado", ConsoleColor.Red);
+                WriteLine(" Deposito efetuado", ConsoleColor.Red);
             }
             Thread.Sleep(2500);
             TelaLogada(pessoa);
@@ -193,7 +193,7 @@ namespace DigiBank.Classes
         {
             Console.Clear();
 
-            Console.WriteLine("     DigiBank - Saque  ");
+            Console.WriteLine(" DigiBank - Saque  ");
             Console.WriteLine();
             Console.WriteLine(" Saldo atual: R$" + pessoa.Conta.ConsultaSaldo().ToString("F2",CultureInfo.InvariantCulture));
 
@@ -229,7 +229,7 @@ namespace DigiBank.Classes
                 break;
             case 2:
                     "Saque não foi efetuado".WriteLine(ConsoleColor.White);
-                    Console.WriteLine(" Voltando ao menu...");
+                    Console.WriteLine(" Voltando ao menu principal");
                     Thread.Sleep(2500);
                     TelaLogada(pessoa);
                 break;
@@ -248,11 +248,11 @@ namespace DigiBank.Classes
         {
             Console.Clear();
 
-            Console.WriteLine("     DigiBank - Saldo");
+            Console.WriteLine(" DigiBank - Saldo");
             Console.WriteLine();
-            Console.WriteLine("     Saldo: R$" + pessoa.Conta.ConsultaSaldo().ToString("F2"), CultureInfo.InvariantCulture);
-            Console.WriteLine("=========================");
-            Console.WriteLine("     1 - Sair   ");
+            Console.WriteLine(" Saldo: R$" + pessoa.Conta.ConsultaSaldo().ToString("F2"), CultureInfo.InvariantCulture);
+            Console.WriteLine("====================");
+            Console.WriteLine(" 1 - Sair   ");
             Console.WriteLine();
             Console.Write(">   ");
             opcao = int.Parse(Console.ReadLine());
@@ -272,7 +272,7 @@ namespace DigiBank.Classes
         {
             Console.Clear();
 
-            Console.WriteLine("    DigiBank - Extrato");
+            Console.WriteLine(" DigiBank - Extrato");
             Console.WriteLine();
 
             if(pessoa.Conta.Extrato().Any())
@@ -282,19 +282,19 @@ namespace DigiBank.Classes
                 foreach(Extrato extrato in pessoa.Conta.Extrato())
                 {
                     Console.WriteLine();
-                    Console.WriteLine($"   Data: {extrato.Data.ToString("dd/MM/yyyy HH:mm:ss")}");
-                    Console.WriteLine($"   Tipo de Movimentação: {extrato.Descricao}  ");
-                    Console.WriteLine($"   Valor: {extrato.Valor}  ");
-                    Console.WriteLine("============================");
+                    Console.WriteLine($" Data: {extrato.Data.ToString("dd/MM/yyyy HH:mm:ss")}");
+                    Console.WriteLine($" Tipo de Movimentação: {extrato.Descricao}  ");
+                    Console.WriteLine($" Valor: {extrato.Valor}  ");
+                    Console.WriteLine("====================");
                 }
 
                 Console.WriteLine();
-                Console.WriteLine($"     SUB TOTAL:  {total}   ");
-                Console.WriteLine("============================");
+                Console.WriteLine($" SUB TOTAL:  {total}   ");
+                Console.WriteLine("====================");
             }
             else 
             {
-                Console.WriteLine("     Não há extrato há ser exibido! ");
+                Console.WriteLine(" Não há extrato há ser exibido! ");
             }
             voltarLogado(pessoa);
         }
@@ -303,19 +303,19 @@ namespace DigiBank.Classes
             Console.Clear();
             
             Console.WriteLine();
-            Console.WriteLine("          DigiBank          ");
+            Console.WriteLine(" DigiBank");
             TelaBoasVindas(pessoa);
             Console.WriteLine();
-            Console.WriteLine("     1 - Realizar Deposito  ");
-            Console.WriteLine("============================");
-            Console.WriteLine("     2 - Realizar Saque     ");
-            Console.WriteLine("============================");
-            Console.WriteLine("     3 - Consultar Saldo    ");
-            Console.WriteLine("============================");
-            Console.WriteLine("     4 - Extrato            ");
-            Console.WriteLine("============================");
-            Console.WriteLine("     5 - Sair               ");
-            Console.WriteLine("============================");
+            Console.WriteLine(" 1 - Realizar Deposito");
+            Console.WriteLine("====================");
+            Console.WriteLine(" 2 - Realizar Saque");
+            Console.WriteLine("====================");
+            Console.WriteLine(" 3 - Consultar Saldo");
+            Console.WriteLine("====================");
+            Console.WriteLine(" 4 - Extrato");
+            Console.WriteLine("====================");
+            Console.WriteLine(" 5 - Sair");
+            Console.WriteLine("====================");
             
             Console.WriteLine();
             Console.Write(">   ");
@@ -353,13 +353,13 @@ namespace DigiBank.Classes
         {
             Console.Clear();
 
-            Console.WriteLine("          DigiBank          ");
+            Console.WriteLine(" DigiBank");
             
             Console.WriteLine();
-            Console.WriteLine("     1 - Voltar             ");
-            Console.WriteLine("============================");
-            Console.WriteLine("     2 - Sair               ");
-            Console.WriteLine("============================");
+            Console.WriteLine(" 1 - Voltar");
+            Console.WriteLine("====================");
+            Console.WriteLine(" 2 - Sair");
+            Console.WriteLine("====================");
 
             opcao = int.Parse(Console.ReadLine());
 
@@ -368,27 +368,29 @@ namespace DigiBank.Classes
             else if (opcao == 2) 
                 TelaPrincipal();
             else 
-                Console.WriteLine("     Opção inválida!       ");
+                Console.WriteLine(" Opção inválida!");
+                Console.Clear();
             return;
         }
         private static void voltarDeslogado()
         {
             Console.Clear();
 
-            Console.WriteLine("          DigiBank          ");
+            Console.WriteLine(" DigiBank");
             Console.WriteLine();
-            Console.WriteLine("     1 - Voltar              ");
-            Console.WriteLine("============================");
-            Console.WriteLine("     2 - Sair                ");
-            Console.WriteLine("============================");
+            Console.WriteLine(" 1 - Voltar");
+            Console.WriteLine("====================");
+            Console.WriteLine(" 2 - Sair");
+            Console.WriteLine("====================");
 
             opcao = int.Parse(Console.ReadLine());
 
             if(opcao == 1)
                 TelaPrincipal();
             else 
-                Console.WriteLine("     Opção inválida!      ");
-                Console.WriteLine("=========================");
+                Console.WriteLine(" Opção inválida!");
+                Console.WriteLine("====================");
+                Console.Clear();
             return;
         }
     }
